@@ -1,0 +1,1 @@
+ok, tô no slide 3, quase no final.
