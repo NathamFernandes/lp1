@@ -2,7 +2,7 @@
 #define VOO_H
 
 #include <string>
-#include ASTRONAUTA_H
+#include "astronauta.h"
 
 class Voo {
     int codigo;

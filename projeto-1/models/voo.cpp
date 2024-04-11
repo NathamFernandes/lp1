@@ -1,19 +1,19 @@
 #include <iostream>
 
-#include VOO_H
+#include "voo.h"
 
-Voo::getCodigo() {
+int Voo::getCodigo() {
     return this.codigo;
 }
 
-Voo::setCodigo(int codigo) {
+void Voo::setCodigo(int codigo) {
     this.codigo = codigo;
 }
 
-Voo::getPassageiros() {
+Astronauta* Voo::getPassageiros() {
     return this.passageiros;
 }
 
-Voo::setPassageiros(Astronauta *passageiros) {
+void Voo::setPassageiros(Astronauta *passageiros) {
     this.passageiros = passageiros;
 }

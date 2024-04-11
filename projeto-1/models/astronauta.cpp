@@ -1,27 +1,27 @@
 #include <iostream>
 
-#include ASTRONAUTA_H
+#include "astronauta.h"
 
-Astronauta::getCpf() {
+string Astronauta::getCpf() {
     return this.cpf; // this->cpf
 }
 
-Astronauta::setCpf(string cpf) {
+void sAstronauta::setCpf(string cpf) {
     this.cpf = cpf;
 }
 
-Astronauta::getNome() {
+string Astronauta::getNome() {
     return this.nome; // this->nome
 }
 
-Astronauta::setNome(string nome) {
+void Astronauta::setNome(string nome) {
     this.nome = nome;
 }
 
-Astronauta::getIdade() {
+int Astronauta::getIdade() {
     return this.idade; // this->idade
 }
 
-Astronauta::setIdade(int idade) {
+void Astronauta::setIdade(int idade) {
     this.idade = idade;
 }
