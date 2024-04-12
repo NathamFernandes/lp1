@@ -15,8 +15,8 @@ class Voo {
         Astronauta* getPassageiros();
         void setPassageiros(Astronauta *pass);
 
-        void addAstronautaNoVoo(string cpf);
-        void rmAstronautaDoVoo(string cpf);
+        void addAstronautaNoVoo(std::string cpf);
+        void rmAstronautaDoVoo(std::string cpf);
 
         void lancarVoo(Astronauta ast);
 

@@ -1,8 +1,6 @@
 #ifndef MENUS_H
 #define MENUS_H
 
-
-
 /*
  * 0 - Encerrar programa
  * 1 - Opções de voo

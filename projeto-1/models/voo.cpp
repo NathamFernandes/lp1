@@ -17,3 +17,7 @@ Astronauta* Voo::getPassageiros() {
 void Voo::setPassageiros(Astronauta *passageiros) {
     this.passageiros = passageiros;
 }
+
+
+void finalizarVoo();
+void explodirVoo();

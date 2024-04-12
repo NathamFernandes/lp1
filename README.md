@@ -1,3 +1,6 @@
+g++ -I .\headers .\main.cpp .\controllers\utils.cpp -o main
+
+
 ## aula sei la
 
 ### sobrecarga de funcao
