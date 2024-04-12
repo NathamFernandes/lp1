@@ -1,6 +1,10 @@
 #include "utils.h"
 #include <stdlib.h> 
 
-void cls() {
+void clear() {
     system("cls");
+}
+
+void pause() {
+    system("pause");
 }

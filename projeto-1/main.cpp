@@ -9,15 +9,21 @@ int menuVoo();
 // #include "menus_h"
 
 int main(int argc, char *argv[]) {
-    int opcao;
+    int opcao = 999;
 
     Astronauta astronauta;
+    Voo voo;
+
 
     while (opcao != 0) {
         // opcao = menuPrincipal();
+        clear();
+        std::cout << "Menuzin massa vei" << std::endl;
         std::cin >> opcao;
 
         switch (opcao) {
+            case 0:
+                break;
             case 1:
                 menuVoo();
                 break;
@@ -25,6 +31,9 @@ int main(int argc, char *argv[]) {
                 //menuVoo();
                 break;
             default:
+                clear();
+                std::cout << "Opção inválida!" << std::endl;
+                pause();
                 //menuOpcaoInvalida();
                 break;
         }
@@ -56,7 +65,7 @@ int menuVoo() {
         "Finalizar um Voo"
     };
 
-    cls();
+    clear();
 
     for (int i = 0; i < 8; i++) {
         std::cout << i << " - " << funcionalidades[i] << "\n";
