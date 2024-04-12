@@ -9,11 +9,20 @@ class Voo {
     Astronauta *passageiros;
 
     public:
-        Voo getCodigo();
-        Voo setCodigo();
+        int getCodigo();
+        void setCodigo(int cod);
 
-        Voo getPassageiros();
-        Voo setPassageiros();
+        Astronauta* getPassageiros();
+        void setPassageiros(Astronauta *pass);
+
+        void addAstronautaNoVoo(string cpf);
+        void rmAstronautaDoVoo(string cpf);
+
+        void lancarVoo(Astronauta ast);
+
+        // delete[]
+        void explodirVoo();
+        void finalizarVoo();
 }
 
 #endif
