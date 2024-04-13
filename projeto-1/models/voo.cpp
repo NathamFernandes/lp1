@@ -3,21 +3,21 @@
 #include "voo.h"
 
 int Voo::getCodigo() {
-    return this.codigo;
+    return this->codigo;
 }
 
 void Voo::setCodigo(int codigo) {
-    this.codigo = codigo;
+    this->codigo = codigo;
 }
 
 Astronauta* Voo::getPassageiros() {
-    return this.passageiros;
+    return this->passageiros;
 }
 
 void Voo::setPassageiros(Astronauta *passageiros) {
-    this.passageiros = passageiros;
+    this->passageiros = passageiros;
 }
 
 
-void finalizarVoo();
-void explodirVoo();
+// void finalizarVoo();
+// void explodirVoo();

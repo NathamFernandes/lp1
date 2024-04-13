@@ -1,13 +1,15 @@
 #ifndef MENUS_H
 #define MENUS_H
 
+#include "astronauta.h"
+
 /*
  * 0 - Encerrar programa
  * 1 - Opções de voo
  * 2 - Opções para astronautas
  *
  */
-int menuPrincipal();
+int displayMenuPrincipal();
 
 /*
  * 0 -
@@ -19,15 +21,21 @@ int menuPrincipal();
  * ***6 - Explodir um voo
  * ***7 - Finalizar um voo
  */
-int menuVoo();
+// int displayMenuVoo();
 
-void menuListarVoos();
-void menuAddAstronautaNoVoo();
+Astronauta* cadastrarAstronauta(Astronauta *param_astronautas_vivos, int param_qtd_astronautas_vivos);
+
+void displayAstronautasMortos(Astronauta *param_astronautas_mortos, int param_qtd_astronautas_vivos);
+
+void displayOpcaoInvalida();
+
+// void menuListarVoos();
+// void menuAddAstronautaNoVoo();
 
 
 
-int menuAstronauta();
+// int menuAstronauta();
 
-void menuListarAstronautasMortos();
+// void menuListarAstronautasMortos();
 
 #endif

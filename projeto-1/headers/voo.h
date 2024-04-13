@@ -1,7 +1,6 @@
 #ifndef VOO_H
 #define VOO_H
 
-#include <string>
 #include "astronauta.h"
 
 class Voo {
@@ -15,14 +14,14 @@ class Voo {
         Astronauta* getPassageiros();
         void setPassageiros(Astronauta *pass);
 
-        void addAstronautaNoVoo(std::string cpf);
-        void rmAstronautaDoVoo(std::string cpf);
+        // void addAstronautaNoVoo(std::string cpf);
+        // void rmAstronautaDoVoo(std::string cpf);
 
-        void lancarVoo(Astronauta ast);
+        // void lancarVoo(Astronauta ast);
 
         // delete[]
-        void explodirVoo();
-        void finalizarVoo();
-}
+        // void explodirVoo();
+        // void finalizarVoo();
+};
 
 #endif
