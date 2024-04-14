@@ -8,6 +8,9 @@ class Voo {
     Astronauta *passageiros;
 
     public:
+        Voo();
+        Voo(int cod, Astronauta *pass);
+
         int getCodigo();
         void setCodigo(int cod);
 

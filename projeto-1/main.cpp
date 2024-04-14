@@ -7,16 +7,11 @@
 #include "menus.h"
 
 int main(int argc, char *argv[]) {
-    int opcao_menu = -1;
-    int opcao_func = -1;
-    int opcao = -1;
+    int opcao = -1, qtd_astronauta_vivos = 0, qtd_astronauta_mortos = 0, qtd_de_voos;
 
-    Astronauta *astronautas_vivos;
-    int qtd_astronauta_vivos = 0;
-    Astronauta *astronautas_mortos;
-    int qtd_astronauta_mortos = 0;
-    // Voo voo;
-    // Voo *lista_de_voos;
+    Astronauta *astronautas_vivos = new Astronauta[0];
+    Astronauta *astronautas_mortos = new Astronauta[0];
+    Voo *lista_de_voos = new Voo[0];
 
     while (opcao != 0) {
         opcao = displayMenuPrincipal();
@@ -24,9 +19,10 @@ int main(int argc, char *argv[]) {
         switch (opcao) {
             case 0:
                 break;
-            // case 1:
-            //     opcao_func = displayMenuVoo();
-            //     break;
+            case 1:
+                lista_de_voos = cadastrarVoo(lista_de_voos, qtd_de_voos); 
+                qtd_de_voos++;
+                break;
             case 2:
                 astronautas_vivos = cadastrarAstronauta(astronautas_vivos, qtd_astronauta_vivos);
                 qtd_astronauta_vivos++;
@@ -40,7 +36,6 @@ int main(int argc, char *argv[]) {
                 displayOpcaoInvalida();
                 break;
         }
-
 
     }
 

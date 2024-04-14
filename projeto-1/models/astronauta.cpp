@@ -19,8 +19,8 @@ Astronauta::Astronauta(Astronauta &param_astronauta) {
     this->idade = param_astronauta.getIdade();
 };
 
-// Astronauta Astronauta::operator= (Astronauta &param_astronauta) {
-//     return Astronauta(param_astronauta.getCpf(), param_astronauta.getNome(), param_astronauta.getIdade());
+// Astronauta Astronauta::operator= (Astronauta *param_astronauta) {
+//     return Astronauta(param_astronauta->getCpf(), param_astronauta->getNome(), param_astronauta->getIdade());
 // }
 
 std::string Astronauta::getCpf() {

@@ -2,6 +2,7 @@
 #define MENUS_H
 
 #include "astronauta.h"
+#include "voo.h"
 
 /*
  * 0 - Encerrar programa
@@ -23,6 +24,7 @@ int displayMenuPrincipal();
  */
 // int displayMenuVoo();
 
+Voo *cadastrarVoo(Voo *param_lista_voos, int tamanho_lista);
 Astronauta* cadastrarAstronauta(Astronauta *param_astronautas_vivos, int param_qtd_astronautas_vivos);
 
 void displayAstronautasMortos(Astronauta *param_astronautas_mortos, int param_qtd_astronautas_vivos);
