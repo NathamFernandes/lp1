@@ -63,12 +63,12 @@ int selecionarVoo(Voo *param_lista_voos, int param_qtd_voos) {
         std::cout << "Por favor, selecione o indice do voo.\n" << std::endl;
 
         for (int i = 0; i < param_qtd_voos; i++) {
-            std::cout << i + 1 << " - Codigo: " << param_lista_voos[i].getCodigo() << "\n\n";
+            std::cout << i + 1 << " - Codigo: " << param_lista_voos[i].getCodigo() << "\n";
         }
 
         std::cin >> opcao;
 
-        opcao_invalida = opcao <= 0 || opcao > param_qtd_voos;
+        opcao_invalida = opcao <= 0 || opcao > param_qtd_voos || (param_lista_voos[opcao -1].getStatus().compare("PLANEJADO") != 0);
 
         if (opcao_invalida) displayOpcaoInvalida();
     } while (opcao_invalida);
@@ -86,7 +86,7 @@ std::string selecionarAstronauta(Astronauta *param_lista_astronautas, int param_
         std::cout << "Por favor, insira o CPF do astronauta.\n" << std::endl;
 
         for (int i = 0; i < param_qtd_astronautas; i++) {
-            std::cout << param_lista_astronautas[i].getCpf() << " - Nome: " << param_lista_astronautas[i].getNome() << "\n\n";
+            std::cout << param_lista_astronautas[i].getCpf() << " - Nome: " << param_lista_astronautas[i].getNome() << "\n";
         }
 
         std::cin >> cpf;
@@ -138,12 +138,22 @@ void adicionarAstronautaNoVoo(Voo *param_lista_voos, Astronauta *param_lista_ast
 
     cpf_astronauta = selecionarAstronauta(param_lista_astronautas, param_qtd_astronautas);
 
+    if (existeAstronautaRepetido(param_lista_voos[opcao_voo], cpf_astronauta)) {
+        return;
+    };
+
+
+//
+
+
+
     int old_qtd_passageiros = param_lista_voos[opcao_voo].getQtdPassageiros();
     Astronauta *new_passageiros = new Astronauta[old_qtd_passageiros + 1];
 
     for (int i = 0; i < old_qtd_passageiros; i++) {
         new_passageiros[i] = param_lista_voos[opcao_voo].passageiros[i];
     }
+
 
 
     new_passageiros[old_qtd_passageiros] = findAstronauta(cpf_astronauta, param_lista_astronautas, param_qtd_astronautas);
@@ -155,6 +165,8 @@ void adicionarAstronautaNoVoo(Voo *param_lista_voos, Astronauta *param_lista_ast
     pause_terminal();
 
     param_lista_voos[opcao_voo].passageiros = new_passageiros;
+    param_lista_voos[opcao_voo].setQtdPassageiros(old_qtd_passageiros + 1);
+
     pause_terminal();
 
     // Astronauta *old_passageiros =  = param_lista_voos[opcao_voo].getPassageiros();
@@ -176,23 +188,27 @@ void adicionarAstronautaNoVoo(Voo *param_lista_voos, Astronauta *param_lista_ast
     // pause_terminal();
 }
 
+bool existeAstronautaRepetido(Voo param_voo, std::string param_cpf) {
+    int qtd_total = 0;
+
+    for (int i = 0; i < param_voo.getQtdPassageiros(); i++) {
+        if (param_cpf.compare(param_voo.getPassageiros()[i].getCpf()) == 0) {
+            qtd_total++;
+        }
+    }
+
+    if (qtd_total > 0) return true;
+    else return false;
+}
+
 Astronauta findAstronauta(std::string param_cpf, Astronauta *param_lista_astronautas, int param_qtd_astronautas) {
     Astronauta astronauta;
 
     for (int i = 0; i < param_qtd_astronautas; i++) {
-
-
         if (param_cpf.compare(param_lista_astronautas[i].getCpf()) == 0) {
-                        std::cout << "bro" << std::endl;
-
-            pause_terminal();
             astronauta = param_lista_astronautas[i];
         }
     }
-
-                            std::cout << "return" << std::endl;
-
-            pause_terminal();
 
     return astronauta;
 
