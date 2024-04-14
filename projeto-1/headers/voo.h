@@ -5,26 +5,37 @@
 
 class Voo {
     int codigo;
-    Astronauta *passageiros;
+    //
+    int qtd_passageiros;
+    std::string status;
 
     public:
+        Astronauta *passageiros;
+
         Voo();
-        Voo(int cod, Astronauta *pass);
+        Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros = 0, std::string param_status = "PLANEJADO");
 
         int getCodigo();
-        void setCodigo(int cod);
+        void setCodigo(int param_codigo);
 
         Astronauta* getPassageiros();
-        void setPassageiros(Astronauta *pass);
+        void setPassageiros(Astronauta *param_passageiros);
 
+        int getQtdPassageiros();
+        void setQtdPassageiros(int param_qtd_passageiros);
+
+        std::string getStatus();
+        void setStatus(std::string param_status);
+};
+
+#endif
+
+/*
         // void addAstronautaNoVoo(std::string cpf);
         // void rmAstronautaDoVoo(std::string cpf);
 
         // void lancarVoo(Astronauta ast);
 
-        // delete[]
         // void explodirVoo();
         // void finalizarVoo();
-};
-
-#endif
+*/

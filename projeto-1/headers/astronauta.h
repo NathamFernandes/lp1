@@ -7,11 +7,13 @@ class Astronauta {
     std::string cpf;
     std::string nome;
     int idade;
+    //
+    bool esta_vivo;
 
     public:
         Astronauta();
-        Astronauta(std::string param_cpf, std::string param_nome, int param_idade);
-        Astronauta(Astronauta &param_astronauta);
+        Astronauta(std::string param_cpf, std::string param_nome, int param_idade, bool param_esta_vivo = true);
+        // Astronauta(Astronauta &param_astronauta);
 
         // Astronauta operator= (Astronauta *param_astronauta);
 
@@ -23,6 +25,9 @@ class Astronauta {
 
         int getIdade();
         void setIdade(int param_idade);
+
+        bool getEstaVivo();
+        void setEstaVivo(bool param_esta_vivo);
 };
 
 #endif

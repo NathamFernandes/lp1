@@ -1,10 +1,20 @@
-#include "utils.h"
 #include <stdlib.h> 
 
-void clear() {
-    system("cls");
+#include "utils.h"
+
+void clear_terminal() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
-void pause() {
-    system("pause");
+void pause_terminal() {
+    #ifdef _WIN32
+        system("pause");
+    #else
+        system("read -p \"Pressione ENTER para sair.\" saindo");
+        clear_terminal();
+    #endif
 }
