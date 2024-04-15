@@ -19,6 +19,6 @@ int selecionarVoo(Voo *param_lista_voos, int param_qtd_voos);
 std::string selecionarAstronauta(Astronauta *param_lista_astronautas, int param_qtd_astronautas);
 
 bool existeAstronautaRepetido(Voo param_voo, std::string param_cpf);
-Astronauta findAstronauta(std::string param_cpf, Astronauta *param_lista_astronautas, int param_qtd_astronautas);
+int findAstronauta(std::string param_cpf, Astronauta *param_lista_astronautas, int param_qtd_astronautas);
 
 #endif

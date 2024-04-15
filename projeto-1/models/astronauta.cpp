@@ -2,28 +2,20 @@
 #include "astronauta.h"
 
 Astronauta::Astronauta() {
-    this->cpf = "";
-    this->nome = "";
-    this->idade = 0;
+    this->cpf       = "";
+    this->nome      = "";
+    this->idade     = 0;
     this->esta_vivo = true;
+    this->is_in_voo = false;
 };
 
-Astronauta::Astronauta(std::string param_cpf, std::string param_nome, int param_idade, bool param_esta_vivo) {
-    this->cpf = param_cpf;
-    this->nome = param_nome;
-    this->idade = param_idade;
+Astronauta::Astronauta(std::string param_cpf, std::string param_nome, int param_idade, bool param_esta_vivo, bool param_is_in_voo) {
+    this->cpf       = param_cpf;
+    this->nome      = param_nome;
+    this->idade     = param_idade;
     this->esta_vivo = param_esta_vivo;
+    this->is_in_voo = param_is_in_voo;
 };
-
-// Astronauta::Astronauta(Astronauta &param_astronauta) {
-//     this->cpf = param_astronauta.getCpf();
-//     this->nome = param_astronauta.getNome();
-//     this->idade = param_astronauta.getIdade();
-// };
-
-// Astronauta Astronauta::operator= (Astronauta *param_astronauta) {
-//     return Astronauta(param_astronauta->getCpf(), param_astronauta->getNome(), param_astronauta->getIdade());
-// }
 
 std::string Astronauta::getCpf() {
     return this->cpf;
@@ -55,4 +47,12 @@ bool Astronauta::getEstaVivo() {
 
 void Astronauta::setEstaVivo(bool param_esta_vivo) {
     this->esta_vivo = param_esta_vivo;
+}
+
+bool Astronauta::getIsInVoo() {
+    return this->is_in_voo;
+}
+
+void Astronauta::setIsInVoo(bool param_is_in_voo) {
+    this->is_in_voo = param_is_in_voo;
 }
