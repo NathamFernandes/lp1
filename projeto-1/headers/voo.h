@@ -13,7 +13,7 @@ class Voo {
         Astronauta *passageiros;
 
         Voo();
-        Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros = 0, std::string param_status = "PLANEJADO");
+        Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros = 0, std::string param_status = "PLANEJAMENTO");
 
         int getCodigo();
         void setCodigo(int param_codigo);

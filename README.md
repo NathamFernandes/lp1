@@ -2,6 +2,11 @@ _g++ -W -I .\headers .\controllers\operations.cpp .\controllers\utils.cpp .\cont
 
 _g++ -W -I ./headers ./controllers/operations.cpp ./controllers/utils.cpp ./controllers/menus.cpp ./models/astronauta.cpp ./models/voo.cpp ./main.cpp -o mainfile_
 
+Validação:
+- voos com mesmo código
+- astronautas com mesmo código
+- lancar voo sem astronautas nele
+
 ## aula sei la
 
 ### sobrecarga de funcao

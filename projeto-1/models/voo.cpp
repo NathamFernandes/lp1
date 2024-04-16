@@ -6,7 +6,7 @@ Voo::Voo() {
     this->codigo = 0;
     this->passageiros = new Astronauta[0];
     this->qtd_passageiros = 0;
-    this->status = "PLANEJADO";
+    this->status = "";
 }
 
 Voo::Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros, std::string param_status) {

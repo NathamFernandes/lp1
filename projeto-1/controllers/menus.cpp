@@ -47,10 +47,10 @@ int displayMenuVoo() {
     return opcao;
 };
 
-void displayQtdInsuficiente() {
+void displayOperacaoInvalida(std::string error) {
     clear_terminal();
 
-    std::cout << "Voos/astronautas insuficientes para realizar a operacao!\n" << std::endl;
+    std::cout << "Operacao invalida: " << error << "!\n" << std::endl;
 
     pause_terminal();
 }

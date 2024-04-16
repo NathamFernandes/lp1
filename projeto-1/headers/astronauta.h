@@ -8,15 +8,12 @@ class Astronauta {
     std::string nome;
     int idade;
     //
-    bool esta_vivo;
-    bool is_in_voo;
+    std::string status;
+    // bool belongs_to_voo;
 
     public:
         Astronauta();
-        Astronauta(std::string param_cpf, std::string param_nome, int param_idade, bool param_esta_vivo = true, bool param_is_in_voo = false);
-        // Astronauta(Astronauta &param_astronauta);
-
-        // Astronauta operator= (Astronauta *param_astronauta);
+        Astronauta(std::string param_cpf, std::string param_nome, int param_idade, std::string param_status = "DISPONIVEL");
 
         std::string getCpf();
         void setCpf(std::string param_cpf);
@@ -27,11 +24,13 @@ class Astronauta {
         int getIdade();
         void setIdade(int param_idade);
 
-        bool getEstaVivo();
-        void setEstaVivo(bool param_esta_vivo);
+        //
 
-        bool getIsInVoo();
-        void setIsInVoo(bool param_is_in_voo);
+        std::string getStatus();
+        void setStatus(std::string param_status);
+
+        // bool getBelongsToVoo();
+        // void setBelongsToVoo(bool param_belongs_to_voo);
 };
 
 #endif

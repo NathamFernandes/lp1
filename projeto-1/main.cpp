@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) {
                     case 2:
                         adicionarAstronautaNoVoo(lista_voos, lista_astronautas, qtd_voos, qtd_astronautas);
                         break;
+                    case 4:
+                        lancarVoo(lista_voos, qtd_voos, qtd_astronautas);
+                        break;
                     default:
                         displayOpcaoInvalida();
                         break;
