@@ -6,7 +6,6 @@ Astronauta::Astronauta() {
     this->nome      = "";
     this->idade     = 0;
     this->status    = "";
-    // this->is_in_voo = false;
 };
 
 Astronauta::Astronauta(std::string param_cpf, std::string param_nome, int param_idade, std::string param_status) {
@@ -14,7 +13,6 @@ Astronauta::Astronauta(std::string param_cpf, std::string param_nome, int param_
     this->nome      = param_nome;
     this->idade     = param_idade;
     this->status    = param_status;
-    // this->is_in_voo = param_is_in_voo;
 };
 
 std::string Astronauta::getCpf() {
@@ -48,11 +46,3 @@ std::string Astronauta::getStatus() {
 void Astronauta::setStatus(std::string param_status) {
     this->status = param_status;
 }
-
-// bool Astronauta::getIsInVoo() {
-//     return this->is_in_voo;
-// }
-
-// void Astronauta::setIsInVoo(bool param_is_in_voo) {
-//     this->is_in_voo = param_is_in_voo;
-// }

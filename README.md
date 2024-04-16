@@ -74,3 +74,12 @@ SOBRECARGA: operator+, operator-, operator\*
 -> https://stackoverflow.com/questions/7740350/overloading-postfix-and-prefix-operators
 
 -> operador cópia? wtf
+
+
+
+
+--
+
+## aula 22 STL
+
+lista encadeada e arrays normais.

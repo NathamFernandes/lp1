@@ -5,52 +5,70 @@
 #include "utils.h"
 
 // Opção: 1
-Voo *cadastrarVoo(Voo *param_lista_voos, int param_qtd_voos) {
+Voo *cadastrarVoo(Voo *lista_voos, int *qtd_voos) {
     int codigo;
     Astronauta *passageiros = new Astronauta[0];
+    int value_qtd = *qtd_voos;
 
     clear_terminal();
 
     std::cout << "Codigo do Voo: ";
     std::cin >> codigo;
 
-    Voo *new_lista_voos = new Voo[param_qtd_voos + 1];
-
-    for (int i = 0; i < param_qtd_voos; i++) {
-        new_lista_voos[i] = param_lista_voos[i];
+    if (findVoo(codigo, lista_voos, value_qtd) != -1) {
+        displayOperacaoInvalida("codigo já cadastrado!");
+        return lista_voos;
     }
 
-    new_lista_voos[param_qtd_voos] = Voo(codigo, passageiros);
+    Voo *new_lista_voos = new Voo[value_qtd + 1];
 
-    delete[] param_lista_voos;
+    for (int i = 0; i < value_qtd; i++) {
+        new_lista_voos[i] = lista_voos[i];
+    }
+
+    new_lista_voos[value_qtd] = Voo(codigo, passageiros);
+
+    delete[] lista_voos;
+
+    (*qtd_voos)++;
 
     return new_lista_voos;
 }
 
 // Opção: 2
-Astronauta *cadastrarAstronauta(Astronauta *param_lista_astronautas, int param_qtd_astronautas) {
+Astronauta *cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas) {
     std::string cpf;
     std::string nome;
     int idade;
+
+    int value_qtd = *qtd_astronautas;
 
     clear_terminal();
 
     std::cout << "CPF: ";
     std::cin >> cpf;
+
+    if (findAstronauta(cpf, lista_astronautas, value_qtd) != -1) {
+        displayOperacaoInvalida("cpf já cadastrado!");
+        return lista_astronautas;
+    }
+
     std::cout << "Nome: ";
     std::cin >> nome;
     std::cout << "Idade: ";
     std::cin >> idade;
 
-    Astronauta *new_astronautas_vivos = new Astronauta[param_qtd_astronautas + 1];
+    Astronauta *new_astronautas_vivos = new Astronauta[value_qtd + 1];
 
-    for (int i = 0; i < param_qtd_astronautas; i++) {
-        new_astronautas_vivos[i] = param_lista_astronautas[i];
+    for (int i = 0; i < value_qtd; i++) {
+        new_astronautas_vivos[i] = lista_astronautas[i];
     }
     
-    new_astronautas_vivos[param_qtd_astronautas] = Astronauta(cpf, nome, idade);
+    new_astronautas_vivos[value_qtd] = Astronauta(cpf, nome, idade);
 
-    delete[] param_lista_astronautas;
+    delete[] lista_astronautas;
+
+    (*qtd_astronautas)++;
 
     return new_astronautas_vivos;
 }
@@ -239,6 +257,16 @@ std::string selecionarAstronauta(Astronauta *param_lista_astronautas, int param_
     } while (opcao_invalida);
 
     return cpf;
+}
+
+int findVoo(int param_codigo, Voo *param_lista_voos, int param_qtd_voos) {
+    for (int i = 0; i < param_qtd_voos; i++) {
+        if (param_codigo == param_lista_voos[i].getCodigo()) {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 int findAstronauta(std::string param_cpf, Astronauta *param_lista_astronautas, int param_qtd_astronautas) {

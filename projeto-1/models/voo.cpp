@@ -14,7 +14,6 @@ Voo::Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passagei
     this->passageiros = param_passageiros;
     this->qtd_passageiros = param_qtd_passageiros;
     this->status = param_status;
-    // delete[] pass;
 }
 
 int Voo::getCodigo() {
@@ -48,6 +47,3 @@ std::string Voo::getStatus() {
 void Voo::setStatus(std::string param_status) {
     this->status = param_status;
 }
-
-// void finalizarVoo();
-// void explodirVoo();

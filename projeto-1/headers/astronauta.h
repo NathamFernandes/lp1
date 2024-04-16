@@ -7,9 +7,10 @@ class Astronauta {
     std::string cpf;
     std::string nome;
     int idade;
+    
     //
+
     std::string status;
-    // bool belongs_to_voo;
 
     public:
         Astronauta();
@@ -28,9 +29,6 @@ class Astronauta {
 
         std::string getStatus();
         void setStatus(std::string param_status);
-
-        // bool getBelongsToVoo();
-        // void setBelongsToVoo(bool param_belongs_to_voo);
 };
 
 #endif

@@ -21,12 +21,10 @@ int main(int argc, char *argv[]) {
             case 0:
                 break;
             case 1:
-                lista_voos = cadastrarVoo(lista_voos, qtd_voos); 
-                qtd_voos++;
+                lista_voos = cadastrarVoo(lista_voos, &qtd_voos); 
                 break;
             case 2:
-                lista_astronautas = cadastrarAstronauta(lista_astronautas, qtd_astronautas);
-                qtd_astronautas++;
+                lista_astronautas = cadastrarAstronauta(lista_astronautas, &qtd_astronautas);
                 break;
             case 3:
                 opcao_gerenciar_voos = displayMenuVoo();
