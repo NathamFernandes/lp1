@@ -3,39 +3,36 @@
 
 #include "astronauta.h"
 
+enum statusVoo {
+        PLANEJAMENTO,
+        EM_CURSO,
+        FINALIZADO_SUCESSO,
+        FINALIZADO_FRACASSO,
+}
+
 class Voo {
     int codigo;
     //
     int qtd_passageiros;
-    std::string status;
+    statusVoo status;
 
     public:
         Astronauta *passageiros;
 
         Voo();
-        Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros = 0, std::string param_status = "PLANEJAMENTO");
+        Voo(int codigo, Astronauta *passageiros = new Astronauta[0], int qtd_passageiros = 0, statusVoo status = PLANEJAMENTO);
 
         int getCodigo();
-        void setCodigo(int param_codigo);
+        void setCodigo(int codigo);
 
         Astronauta* getPassageiros();
-        void setPassageiros(Astronauta *param_passageiros);
+        void setPassageiros(Astronauta *passageiros);
 
         int getQtdPassageiros();
-        void setQtdPassageiros(int param_qtd_passageiros);
+        void setQtdPassageiros(int qtd_passageiros);
 
-        std::string getStatus();
-        void setStatus(std::string param_status);
+        statusVoo getStatus();
+        void setStatus(statusVoo status);
 };
 
 #endif
-
-/*
-        // void addAstronautaNoVoo(std::string cpf);
-        // void rmAstronautaDoVoo(std::string cpf);
-
-        // void lancarVoo(Astronauta ast);
-
-        // void explodirVoo();
-        // void finalizarVoo();
-*/

@@ -5,44 +5,44 @@ Astronauta::Astronauta() {
     this->cpf       = "";
     this->nome      = "";
     this->idade     = 0;
-    this->status    = "";
+    this->status    = DISPONIVEL;
 };
 
-Astronauta::Astronauta(std::string param_cpf, std::string param_nome, int param_idade, std::string param_status) {
-    this->cpf       = param_cpf;
-    this->nome      = param_nome;
-    this->idade     = param_idade;
-    this->status    = param_status;
+Astronauta::Astronauta(std::string cpf, std::string nome, int idade, statusAstronauta status) {
+    this->cpf       = cpf;
+    this->nome      = nome;
+    this->idade     = idade;
+    this->status    = status;
 };
 
 std::string Astronauta::getCpf() {
     return this->cpf;
 }
 
-void Astronauta::setCpf(std::string param_cpf) {
-    this->cpf = param_cpf;
+void Astronauta::setCpf(std::string cpf) {
+    this->cpf = cpf;
 }
 
 std::string Astronauta::getNome() {
     return this->nome;
 }
 
-void Astronauta::setNome(std::string param_nome) {
-    this->nome = param_nome;
+void Astronauta::setNome(std::string nome) {
+    this->nome = nome;
 }
 
 int Astronauta::getIdade() {
     return this->idade;
 }
 
-void Astronauta::setIdade(int param_idade) {
-    this->idade = param_idade;
+void Astronauta::setIdade(int idade) {
+    this->idade = idade;
 }
 
-std::string Astronauta::getStatus() {
+statusAstronauta Astronauta::getStatus() {
     return this->status;
 }
 
-void Astronauta::setStatus(std::string param_status) {
-    this->status = param_status;
+void Astronauta::setStatus(statusAstronauta status) {
+    this->status = status;
 }

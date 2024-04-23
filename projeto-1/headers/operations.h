@@ -6,8 +6,8 @@
 
 /*
 -> Opção: 1
-- @param Voo *param_lista_voos, o endereço da lista de voos.
-- @param int param_qtd_voos, tamanho da lista de voos atual.
+- @param Voo *lista_voos, o endereço da lista de voos.
+- @param int qtd_voos, tamanho da lista de voos atual.
 - @return um novo endereço para a lista incrementado do novo voo.
 */
 Voo* cadastrarVoo(Voo *lista_voos, int *qtd_voos);
@@ -15,15 +15,15 @@ Voo* cadastrarVoo(Voo *lista_voos, int *qtd_voos);
 // Opção: 2
 Astronauta* cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas);
 
-void listarVoos(Voo *param_lista_voos, int param_qtd_voos);
+void listarVoos(Voo *lista_voos, int *qtd_voos);
 
-void adicionarAstronautaNoVoo(Voo *param_lista_voos, Astronauta *param_lista_astronautas, int param_qtd_voos, int param_qtd_astronautas);
+void adicionarAstronautaNoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int *qtd_voos, int *qtd_astronautas);
 
 // Opção: 3 -> 3
-void removerAstronautaDoVoo();
+void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int *qtd_voos, int *qtd_astronautas);
 
 // Opção: 3 -> 4
-void lancarVoo(Voo *param_lista_voos, int param_qtd_voos, int param_qtd_astronautas);
+void lancarVoo(Voo *lista_voos, int *qtd_voos, int *qtd_astronautas);
 
 // Opção: 3 -> 5
 void explodirVoo();
@@ -32,18 +32,18 @@ void explodirVoo();
 void finalizarVoo();
 
 // Opção: 4
-void listarAstronautasMortos(Astronauta *param_lista_astronautas, int param_qtd_astronautas);
+void listarAstronautasMortos(Astronauta *lista_astronautas, int *qtd_astronautas);
 
 /*
 Funções auxiliares e de validação para a regra de negócio do programa.
 */
 
-int selecionarVoo(Voo *param_lista_voos, int param_qtd_voos);
-std::string selecionarAstronauta(Astronauta *param_lista_astronautas, int param_qtd_astronautas);
+int selecionarVoo(Voo *lista_voos, int *qtd_voos);
+std::string selecionarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas);
 
-int findVoo(int param_codigo, Voo *param_lista_voos, int param_qtd_voos);
-int findAstronauta(std::string param_cpf, Astronauta *param_lista_astronautas, int param_qtd_astronautas);
-bool existeAstronautaRepetido(Voo param_voo, std::string param_cpf);
+int findVoo(int codigo, Voo *lista_voos, int *qtd_voos);
+int findAstronauta(std::string cpf, Astronauta *lista_astronautas, int *qtd_astronautas);
+bool vooContainsAstronauta(Voo voo, std::string cpf);
 
 
 #endif

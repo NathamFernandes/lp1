@@ -33,13 +33,19 @@ int main(int argc, char *argv[]) {
                     case 0:
                         break;
                     case 1:
-                        listarVoos(lista_voos, qtd_voos);
+                        listarVoos(lista_voos, &qtd_voos);
                         break;
                     case 2:
-                        adicionarAstronautaNoVoo(lista_voos, lista_astronautas, qtd_voos, qtd_astronautas);
+                        adicionarAstronautaNoVoo(lista_voos, lista_astronautas, &qtd_voos, &qtd_astronautas);
                         break;
                     case 4:
-                        lancarVoo(lista_voos, qtd_voos, qtd_astronautas);
+                        lancarVoo(lista_voos, &qtd_voos, &qtd_astronautas);
+                        break;
+                    case 5:
+                        explodirVo();
+                        break;
+                    case 6:
+                        finalizarVoo();
                         break;
                     default:
                         displayOpcaoInvalida();
@@ -48,7 +54,7 @@ int main(int argc, char *argv[]) {
 
                 break;
             case 4:
-                listarAstronautasMortos(lista_astronautas, qtd_astronautas);
+                listarAstronautasMortos(lista_astronautas, &qtd_astronautas);
                 break;
             default:
                 displayOpcaoInvalida();

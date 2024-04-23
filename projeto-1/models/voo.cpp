@@ -6,44 +6,44 @@ Voo::Voo() {
     this->codigo = 0;
     this->passageiros = new Astronauta[0];
     this->qtd_passageiros = 0;
-    this->status = "";
+    this->status = PLANEJAMENTO;
 }
 
-Voo::Voo(int param_codigo, Astronauta *param_passageiros, int param_qtd_passageiros, std::string param_status) {
-    this->codigo = param_codigo;
-    this->passageiros = param_passageiros;
-    this->qtd_passageiros = param_qtd_passageiros;
-    this->status = param_status;
+Voo::Voo(int codigo, Astronauta *passageiros, int qtd_passageiros, statusVoo status) {
+    this->codigo = codigo;
+    this->passageiros = passageiros;
+    this->qtd_passageiros = qtd_passageiros;
+    this->status = status;
 }
 
 int Voo::getCodigo() {
     return this->codigo;
 }
 
-void Voo::setCodigo(int param_codigo) {
-    this->codigo = param_codigo;
+void Voo::setCodigo(int codigo) {
+    this->codigo = codigo;
 }
 
 Astronauta* Voo::getPassageiros() {
     return this->passageiros;
 }
 
-void Voo::setPassageiros(Astronauta *param_passageiros) {
-    this->passageiros = param_passageiros;
+void Voo::setPassageiros(Astronauta *passageiros) {
+    this->passageiros = passageiros;
 }
 
 int Voo::getQtdPassageiros() {
     return this->qtd_passageiros;
 }
 
-void Voo::setQtdPassageiros(int param_qtd_passageiros) {
-    this->qtd_passageiros = param_qtd_passageiros;
+void Voo::setQtdPassageiros(int qtd_passageiros) {
+    this->qtd_passageiros = qtd_passageiros;
 }
 
-std::string Voo::getStatus() {
+statusVoo Voo::getStatus() {
     return this->status;
 }
 
-void Voo::setStatus(std::string param_status) {
-    this->status = param_status;
+void Voo::setStatus(statusVoo status) {
+    this->status = status;
 }
