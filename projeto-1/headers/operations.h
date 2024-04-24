@@ -15,7 +15,7 @@ Voo* cadastrarVoo(Voo *lista_voos, int *qtd_voos);
 // Opção: 2
 Astronauta* cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas);
 
-void listarVoos(Voo *lista_voos, int *qtd_voos);
+void listarVoos(Voo *lista_voos, int qtd_voos);
 
 void adicionarAstronautaNoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int *qtd_voos, int *qtd_astronautas);
 
@@ -23,27 +23,27 @@ void adicionarAstronautaNoVoo(Voo *lista_voos, Astronauta *lista_astronautas, in
 void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int *qtd_voos, int *qtd_astronautas);
 
 // Opção: 3 -> 4
-void lancarVoo(Voo *lista_voos, int *qtd_voos, int *qtd_astronautas);
+void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 3 -> 5
-void explodirVoo();
+void explodirVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 3 -> 6
-void finalizarVoo();
+void finalizarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 4
-void listarAstronautasMortos(Astronauta *lista_astronautas, int *qtd_astronautas);
+void listarAstronautasMortos(Astronauta *lista_astronautas, int qtd_astronautas);
 
 /*
 Funções auxiliares e de validação para a regra de negócio do programa.
 */
 
-int selecionarVoo(Voo *lista_voos, int *qtd_voos);
-std::string selecionarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas);
+int selecionarVoo(Voo *lista_voos, int qtd_voos);
+std::string selecionarAstronauta(Astronauta *lista_astronautas, int qtd_astronautas);
 
-int findVoo(int codigo, Voo *lista_voos, int *qtd_voos);
-int findAstronauta(std::string cpf, Astronauta *lista_astronautas, int *qtd_astronautas);
-bool vooContainsAstronauta(Voo voo, std::string cpf);
+int findVoo(int codigo, Voo *lista_voos, int qtd_voos);
+int findAstronauta(std::string cpf, Astronauta *lista_astronautas, int qtd_astronautas);
+int findAstronautaNoVoo(Voo voo, std::string cpf);
 
 
 #endif

@@ -5,10 +5,10 @@ Astronauta::Astronauta() {
     this->cpf       = "";
     this->nome      = "";
     this->idade     = 0;
-    this->status    = DISPONIVEL;
+    this->status    = 0;
 };
 
-Astronauta::Astronauta(std::string cpf, std::string nome, int idade, statusAstronauta status) {
+Astronauta::Astronauta(std::string cpf, std::string nome, int idade, int status) {
     this->cpf       = cpf;
     this->nome      = nome;
     this->idade     = idade;
@@ -39,10 +39,10 @@ void Astronauta::setIdade(int idade) {
     this->idade = idade;
 }
 
-statusAstronauta Astronauta::getStatus() {
+int Astronauta::getStatus() {
     return this->status;
 }
 
-void Astronauta::setStatus(statusAstronauta status) {
+void Astronauta::setStatus(int status) {
     this->status = status;
 }

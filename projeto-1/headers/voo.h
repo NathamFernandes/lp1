@@ -3,24 +3,17 @@
 
 #include "astronauta.h"
 
-enum statusVoo {
-        PLANEJAMENTO,
-        EM_CURSO,
-        FINALIZADO_SUCESSO,
-        FINALIZADO_FRACASSO,
-}
-
 class Voo {
     int codigo;
     //
     int qtd_passageiros;
-    statusVoo status;
+    int status;
 
     public:
         Astronauta *passageiros;
 
         Voo();
-        Voo(int codigo, Astronauta *passageiros = new Astronauta[0], int qtd_passageiros = 0, statusVoo status = PLANEJAMENTO);
+        Voo(int codigo, Astronauta *passageiros = new Astronauta[0], int qtd_passageiros = 0, int status = 0);
 
         int getCodigo();
         void setCodigo(int codigo);
@@ -31,8 +24,8 @@ class Voo {
         int getQtdPassageiros();
         void setQtdPassageiros(int qtd_passageiros);
 
-        statusVoo getStatus();
-        void setStatus(statusVoo status);
+        int getStatus();
+        void setStatus(int status);
 };
 
 #endif

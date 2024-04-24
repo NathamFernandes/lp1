@@ -3,13 +3,6 @@
 
 #include <string>
 
-enum statusAstronauta {
-    DISPONIVEL,
-    ALOCADO,
-    EM_MISSAO,
-    MORTO,
-}
-
 class Astronauta {
     std::string cpf;
     std::string nome;
@@ -17,11 +10,11 @@ class Astronauta {
     
     //
 
-    statusAstronauta status;
+    int status;
 
     public:
         Astronauta();
-        Astronauta(std::string cpf, std::string nome, int idade, statusAstronauta status = DISPONIVEL);
+        Astronauta(std::string cpf, std::string nome, int idade, int status = 0);
 
         std::string getCpf();
         void setCpf(std::string cpf);
@@ -34,8 +27,8 @@ class Astronauta {
 
         //
 
-        statusAstronauta getStatus();
-        void setStatus(statusAstronauta status);
+        int getStatus();
+        void setStatus(int status);
 };
 
 #endif
