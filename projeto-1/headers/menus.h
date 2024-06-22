@@ -4,6 +4,7 @@
 #include <string>
 
 /*
+
 ÁRVORE DE OPÇÕES
 
 0 - Sair do programa
@@ -18,6 +19,7 @@
     \_ 5 - Explodir um voo
     \_ 6 - Finalizar um voo
 4 - Mostrar astronautas mortos
+
 */
 
 int displayMenuPrincipal();
@@ -25,14 +27,5 @@ int displayMenuVoo();
 
 void displayOperacaoInvalida(std::string error);
 void displayOpcaoInvalida();
-
-// void menuListarVoos();
-// void menuAddAstronautaNoVoo();
-
-
-
-// int menuAstronauta();
-
-// void menuListarAstronautasMortos();
 
 #endif

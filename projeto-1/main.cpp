@@ -45,10 +45,10 @@ int main(int argc, char *argv[]) {
                         lancarVoo(lista_voos, qtd_voos, qtd_astronautas);
                         break;
                     case 5:
-                        explodirVoo(lista_voos, qtd_voos, qtd_astronautas);
+                        explodirVoo(lista_astronautas, lista_voos, qtd_voos, qtd_astronautas);
                         break;
                     case 6:
-                        finalizarVoo(lista_voos, qtd_voos, qtd_astronautas);
+                        finalizarVoo(lista_astronautas, lista_voos, qtd_voos, qtd_astronautas);
                         break;
                     default:
                         displayOpcaoInvalida();

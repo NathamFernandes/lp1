@@ -26,10 +26,10 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
 void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 3 -> 5
-void explodirVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
+void explodirVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 3 -> 6
-void finalizarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas);
+void finalizarVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas);
 
 // Opção: 4
 void listarAstronautasMortos(Astronauta *lista_astronautas, int qtd_astronautas);

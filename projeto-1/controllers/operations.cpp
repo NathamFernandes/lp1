@@ -14,7 +14,7 @@ Voo *cadastrarVoo(Voo *lista_voos, int *qtd_voos) {
     std::cin >> codigo;
 
     if (findVoo(codigo, lista_voos, *qtd_voos) != -1) {
-        displayOperacaoInvalida("voo já cadastrado!");
+        displayOperacaoInvalida("voo ja cadastrado");
         return lista_voos;
     }
 
@@ -29,6 +29,12 @@ Voo *cadastrarVoo(Voo *lista_voos, int *qtd_voos) {
     delete[] lista_voos;
 
     (*qtd_voos)++;
+
+    clear_terminal();
+
+    std::cout << "Voo cadastrado com sucesso!" << "\n" << std::endl;
+
+    pause_terminal(); 
 
     return new_lista_voos;
 }
@@ -45,7 +51,7 @@ Astronauta *cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronau
     std::cin >> cpf;
 
     if (findAstronauta(cpf, lista_astronautas, *qtd_astronautas) != -1) {
-        displayOperacaoInvalida("cpf já cadastrado!");
+        displayOperacaoInvalida("cpf ja cadastrado");
         return lista_astronautas;
     }
 
@@ -66,12 +72,19 @@ Astronauta *cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronau
 
     (*qtd_astronautas)++;
 
+    clear_terminal();
+
+    std::cout << "Astronauta cadastrado com sucesso!" << "\n" << std::endl;
+
+    pause_terminal(); 
+
     return new_lista_astronautas;
 }
 
 // Opção: 3 -> 1
 void listarVoos(Voo *lista_voos, int qtd_voos) {
     int qtd_passageiros;
+    std::string status;
 
     clear_terminal();
 
@@ -80,7 +93,22 @@ void listarVoos(Voo *lista_voos, int qtd_voos) {
     for (int i = 0; i < qtd_voos; i++) {
         qtd_passageiros = lista_voos[i].getQtdPassageiros();
 
-        std::cout << i + 1 << " - Codigo: " << lista_voos[i].getCodigo() << "; Passageiros: " << qtd_passageiros << "\n";
+        switch (lista_voos[i].getStatus()) {
+            case 0:
+                status = "PLANEJAMENTO";
+                break;
+            case 1:
+                status = "EM CURSO";
+                break;
+            case 2:
+                status = "FINALIZADO";
+                break;
+            case 3:
+                status = "EXPLODIDO";
+        }
+        
+
+        std::cout << i + 1 << " - Codigo: " << lista_voos[i].getCodigo() << "; Passageiros: " << qtd_passageiros << " [" << status << "]" << "\n";
         for (int j = 0; j < qtd_passageiros; j++) {
             std::cout << "    " << "- Astronauta: " << j + 1 << ": " << lista_voos[i].getPassageiros()[j].getNome() << " CPF: " << lista_voos[i].getPassageiros()[j].getCpf() << "\n";
         }
@@ -105,6 +133,11 @@ void adicionarAstronautaNoVoo(Voo *lista_voos, Astronauta *lista_astronautas, in
     opcao_voo = selecionarVoo(lista_voos, *qtd_voos);
     if (opcao_voo == 0) return;
     opcao_voo--;
+
+    if (lista_voos[opcao_voo].getStatus() != 0) {
+        displayOperacaoInvalida("o voo nao esta em planejamento");
+        return;
+    }
 
     cpf_astronauta = selecionarAstronauta(lista_astronautas, *qtd_astronautas);
 
@@ -160,6 +193,16 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
     if (opcao_voo == 0) return;
     opcao_voo--;
 
+    if (lista_voos[opcao_voo].getStatus() != 0) {
+        displayOperacaoInvalida("o voo nao esta em planejamento");
+        return;
+    }
+
+    if (lista_voos[opcao_voo].getQtdPassageiros() == 0) {
+        displayOperacaoInvalida("o voo nao possui astronautas");
+        return;
+    }
+
     cpf_astronauta = selecionarAstronauta(lista_astronautas, *qtd_astronautas);
 
     if (findAstronautaNoVoo(lista_voos[opcao_voo], cpf_astronauta) == -1) {
@@ -173,13 +216,13 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
 
     lista_astronautas[index_astronauta_lista].setStatus(0);
 
-        std::cout << "debug 1 " << opcao_voo << index_astronauta_passageiros << std::endl; 
+        // std::cout << "debug 1 " << opcao_voo << index_astronauta_passageiros << std::endl; 
 
     /* Declaração e inicialização de nova lista de passageiros */
     int old_qtd_passageiros = lista_voos[opcao_voo].getQtdPassageiros();
     Astronauta *new_passageiros = new Astronauta[old_qtd_passageiros - 1];
 
-    std::cout << "debug 2 " << old_qtd_passageiros << std::endl; 
+    // std::cout << "debug 2 " << old_qtd_passageiros << std::endl; 
 
     for (int i = 0; i < index_astronauta_passageiros; i++) {
         new_passageiros[i] = lista_voos[opcao_voo].passageiros[i];
@@ -189,15 +232,15 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
         new_passageiros[i] = lista_voos[opcao_voo].passageiros[i + 1];
     }
 
-        std::cout << "debug 3 " << std::endl;
+        // std::cout << "debug 3 " << std::endl;
 
     delete[] lista_voos[opcao_voo].passageiros;
     lista_voos[opcao_voo].passageiros = new_passageiros;
     lista_voos[opcao_voo].setQtdPassageiros(old_qtd_passageiros - 1);
 
-    std::cout << "debug 4 " << std::endl;
+    // std::cout << "debug 4 " << std::endl;
 
-    // clear_terminal();
+    clear_terminal();
 
     std::cout << "Astronauta removido com sucesso!\n\n" << std::endl;
     
@@ -221,16 +264,25 @@ void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     if (opcao_voo == 0) return;
     opcao_voo--;
 
+    if (lista_voos[opcao_voo].getStatus() != 0) {
+        displayOperacaoInvalida("o voo nao esta em planejamento");
+        return;
+    }
+
+    if (lista_voos[opcao_voo].getQtdPassageiros() == 0) {
+        displayOperacaoInvalida("o voo nao possui astronautas");
+        return;
+    }
+
     lista_voos[opcao_voo].setStatus(1);
 
     for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
         lista_voos[opcao_voo].passageiros[i].setStatus(2);
     }
 
-    
     clear_terminal();
 
-    std::cout << "Voo lançado com sucesso!\n\n" << std::endl;
+    std::cout << "Voo lancado com sucesso!\n\n" << std::endl;
     
     pause_terminal();
 
@@ -238,7 +290,7 @@ void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
 
 // Opção: 3 -> 5
 
-void explodirVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
+void explodirVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     int opcao_voo;
     
     clear_terminal();
@@ -253,16 +305,44 @@ void explodirVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     if (opcao_voo == 0) return;
     opcao_voo--;
 
+    if (lista_voos[opcao_voo].getStatus() != 1) {
+        displayOperacaoInvalida("o voo nao esta em andamento");
+        return;
+    }
+
+    lista_voos[opcao_voo].setStatus(3);
+
+    for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
+        lista_voos[opcao_voo].passageiros[i].setStatus(3);
+    }
+
+        // pause_terminal();  
+        //     clear_terminal();
+
+    for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
+        for (int j = 0; j < qtd_astronautas; j++) {
+
+            if (lista_astronautas[j].getCpf() == lista_voos[opcao_voo].passageiros[i].getCpf()) {
+                lista_astronautas[j].setStatus(3);
+            }
+        }
+        // std::cout << lista_astronautas[i].getCpf() << "|" << lista_voos[opcao_voo].passageiros[i].getCpf() << "\n" << std::endl;
+    }
+
+    delete[] lista_voos[opcao_voo].passageiros;
+    lista_voos[opcao_voo].passageiros = new Astronauta[0];
+    lista_voos[opcao_voo].setQtdPassageiros(0);
+
     clear_terminal();
 
-    std::cout << "Voo lançado com sucesso!\n\n" << std::endl;
+    std::cout << "Voo explodido com sucesso!\n\n" << std::endl;
     
     pause_terminal();    
 }
 
 // Opção: 3 -> 6
 
-void finalizarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
+void finalizarVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     int opcao_voo;
     
     clear_terminal();
@@ -277,9 +357,34 @@ void finalizarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     if (opcao_voo == 0) return;
     opcao_voo--;
 
+    if (lista_voos[opcao_voo].getStatus() != 1) {
+        displayOperacaoInvalida("o voo nao esta em andamento");
+        return;
+    }
+
+    lista_voos[opcao_voo].setStatus(2);
+
+    for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
+        lista_voos[opcao_voo].passageiros[i].setStatus(0);
+    }
+
+    for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
+        for (int j = 0; j < qtd_astronautas; j++) {
+
+            if (lista_astronautas[j].getCpf() == lista_voos[opcao_voo].passageiros[i].getCpf()) {
+                lista_astronautas[j].setStatus(0);
+            }
+        }
+        // std::cout << lista_astronautas[i].getCpf() << "|" << lista_voos[opcao_voo].passageiros[i].getCpf() << "\n" << std::endl;
+    }
+
+    delete[] lista_voos[opcao_voo].passageiros;
+    lista_voos[opcao_voo].passageiros = new Astronauta[0];
+    lista_voos[opcao_voo].setQtdPassageiros(0);
+
     clear_terminal();
 
-    std::cout << "Voo lançado com sucesso!\n\n" << std::endl;
+    std::cout << "Voo finalizado com sucesso!\n\n" << std::endl;
     
     pause_terminal();    
 }
@@ -297,6 +402,8 @@ void listarAstronautasMortos(Astronauta *lista_astronautas, int qtd_astronautas)
         
     }
 
+    std::cout << "\n" << std::endl;
+
     pause_terminal();
 }
 
@@ -307,6 +414,7 @@ void listarAstronautasMortos(Astronauta *lista_astronautas, int qtd_astronautas)
 int selecionarVoo(Voo *lista_voos, int qtd_voos) {
     int opcao;
     bool opcao_invalida;
+    std::string status;
 
     do {
         clear_terminal();
@@ -314,12 +422,26 @@ int selecionarVoo(Voo *lista_voos, int qtd_voos) {
         std::cout << "Por favor, selecione o indice do voo.\n" << std::endl;
 
         for (int i = 0; i < qtd_voos; i++) {
-            std::cout << i + 1 << " - Codigo: " << lista_voos[i].getCodigo() << "\n";
+            switch (lista_voos[i].getStatus()) {
+                case 0:
+                    status = "PLANEJAMENTO";
+                    break;
+                case 1:
+                    status = "EM VOO";
+                    break;
+                case 2:
+                    status = "FINALIZADO";
+                    break;
+                case 3:
+                    status = "EXPLODIDO";
+            }       
+
+            std::cout << i + 1 << " - Codigo: " << lista_voos[i].getCodigo() << " [" << status << "]" << "\n";
         }
 
         std::cin >> opcao;
 
-        opcao_invalida = opcao <= 0 || opcao > qtd_voos || (lista_voos[opcao - 1].getStatus() != 0);
+        opcao_invalida = opcao <= 0 || opcao > qtd_voos;
 
         if (opcao_invalida) displayOpcaoInvalida();
     } while (opcao_invalida);
@@ -330,6 +452,7 @@ int selecionarVoo(Voo *lista_voos, int qtd_voos) {
 std::string selecionarAstronauta(Astronauta *lista_astronautas, int qtd_astronautas) {
     std::string cpf;
     bool opcao_invalida = true;
+    std::string status;
 
     do {
         clear_terminal();
@@ -337,7 +460,21 @@ std::string selecionarAstronauta(Astronauta *lista_astronautas, int qtd_astronau
         std::cout << "Por favor, insira o CPF do astronauta.\n" << std::endl;
 
         for (int i = 0; i < qtd_astronautas; i++) {
-            std::cout << lista_astronautas[i].getCpf() << " - Nome: " << lista_astronautas[i].getNome() << "\n";
+            switch (lista_astronautas[i].getStatus()) {
+                case 0:
+                    status = "DISPONIVEL";
+                    break;
+                case 1:
+                    status = "ALOCADO";
+                    break;
+                case 2:
+                    status = "EM VOO";
+                    break;
+                case 3:
+                    status = "MORTO";
+            }       
+
+            std::cout << lista_astronautas[i].getCpf() << " - Nome: " << lista_astronautas[i].getNome() << " [" << status << "]" << "\n";
         }
 
         std::cin >> cpf;
