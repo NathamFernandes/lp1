@@ -4,19 +4,16 @@
 #include "voo.h"
 #include "astronauta.h"
 
-/*
--> Opção: 1
-- @param Voo *lista_voos, o endereço da lista de voos.
-- @param int qtd_voos, tamanho da lista de voos atual.
-- @return um novo endereço para a lista incrementado do novo voo.
-*/
+// Opção: 1
 Voo* cadastrarVoo(Voo *lista_voos, int *qtd_voos);
 
 // Opção: 2
 Astronauta* cadastrarAstronauta(Astronauta *lista_astronautas, int *qtd_astronautas);
 
+// Opção: 3 -> 1
 void listarVoos(Voo *lista_voos, int qtd_voos);
 
+// Opção: 3 -> 2
 void adicionarAstronautaNoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int *qtd_voos, int *qtd_astronautas);
 
 // Opção: 3 -> 3

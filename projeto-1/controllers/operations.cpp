@@ -216,13 +216,9 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
 
     lista_astronautas[index_astronauta_lista].setStatus(0);
 
-        // std::cout << "debug 1 " << opcao_voo << index_astronauta_passageiros << std::endl; 
-
     /* Declaração e inicialização de nova lista de passageiros */
     int old_qtd_passageiros = lista_voos[opcao_voo].getQtdPassageiros();
     Astronauta *new_passageiros = new Astronauta[old_qtd_passageiros - 1];
-
-    // std::cout << "debug 2 " << old_qtd_passageiros << std::endl; 
 
     for (int i = 0; i < index_astronauta_passageiros; i++) {
         new_passageiros[i] = lista_voos[opcao_voo].passageiros[i];
@@ -232,13 +228,9 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
         new_passageiros[i] = lista_voos[opcao_voo].passageiros[i + 1];
     }
 
-        // std::cout << "debug 3 " << std::endl;
-
     delete[] lista_voos[opcao_voo].passageiros;
     lista_voos[opcao_voo].passageiros = new_passageiros;
     lista_voos[opcao_voo].setQtdPassageiros(old_qtd_passageiros - 1);
-
-    // std::cout << "debug 4 " << std::endl;
 
     clear_terminal();
 
@@ -248,7 +240,6 @@ void removerAstronautaDoVoo(Voo *lista_voos, Astronauta *lista_astronautas, int 
 }
 
 // Opção: 3 -> 4
-
 void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     int opcao_voo;
     
@@ -289,7 +280,6 @@ void lancarVoo(Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
 }
 
 // Opção: 3 -> 5
-
 void explodirVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     int opcao_voo;
     
@@ -316,19 +306,15 @@ void explodirVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, i
         lista_voos[opcao_voo].passageiros[i].setStatus(3);
     }
 
-        // pause_terminal();  
-        //     clear_terminal();
-
     for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
         for (int j = 0; j < qtd_astronautas; j++) {
-
             if (lista_astronautas[j].getCpf() == lista_voos[opcao_voo].passageiros[i].getCpf()) {
                 lista_astronautas[j].setStatus(3);
             }
         }
-        // std::cout << lista_astronautas[i].getCpf() << "|" << lista_voos[opcao_voo].passageiros[i].getCpf() << "\n" << std::endl;
     }
-
+    
+    /* Clear dos passageiros do voo */
     delete[] lista_voos[opcao_voo].passageiros;
     lista_voos[opcao_voo].passageiros = new Astronauta[0];
     lista_voos[opcao_voo].setQtdPassageiros(0);
@@ -341,7 +327,6 @@ void explodirVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, i
 }
 
 // Opção: 3 -> 6
-
 void finalizarVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, int qtd_astronautas) {
     int opcao_voo;
     
@@ -370,14 +355,13 @@ void finalizarVoo(Astronauta *lista_astronautas, Voo *lista_voos, int qtd_voos, 
 
     for (int i = 0; i < lista_voos[opcao_voo].getQtdPassageiros(); i++) {
         for (int j = 0; j < qtd_astronautas; j++) {
-
             if (lista_astronautas[j].getCpf() == lista_voos[opcao_voo].passageiros[i].getCpf()) {
                 lista_astronautas[j].setStatus(0);
             }
         }
-        // std::cout << lista_astronautas[i].getCpf() << "|" << lista_voos[opcao_voo].passageiros[i].getCpf() << "\n" << std::endl;
     }
 
+    /* Clear dos passageiros do voo */
     delete[] lista_voos[opcao_voo].passageiros;
     lista_voos[opcao_voo].passageiros = new Astronauta[0];
     lista_voos[opcao_voo].setQtdPassageiros(0);
@@ -399,7 +383,6 @@ void listarAstronautasMortos(Astronauta *lista_astronautas, int qtd_astronautas)
         if (lista_astronautas[i].getStatus() == 3) {
             std::cout << i + 1 << " - Nome: " << lista_astronautas[i].getNome() << "; Idade: " << lista_astronautas[i].getIdade() << "; CPF: " << lista_astronautas[i].getCpf() << "\n";
         }
-        
     }
 
     std::cout << "\n" << std::endl;
